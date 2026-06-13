@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Your Free Field Guide – Biko Method</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f4f7fb;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 28px 16px 48px;
+    }
+
+    /* Guard: hidden until JS confirms access */
+    #content { display: none; width: 100%; max-width: 900px; }
+
+    /* ── Top bar ── */
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .brand {
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #1b4f82;
+    }
+
+    .greeting {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      color: #0d2f52;
+    }
+
+    .greeting span { color: #1b4f82; }
+
+    .dl-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: linear-gradient(135deg, #1b4f82, #0d2f52);
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      padding: 10px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: opacity 0.2s, transform 0.15s;
+    }
+
+    .dl-btn:hover { opacity: 0.9; transform: translateY(-1px); }
+
+    /* ── PDF card ── */
+    .pdf-card {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.09);
+      overflow: hidden;
+      width: 100%;
+    }
+
+    .pdf-card-header {
+      background: linear-gradient(135deg, #1b4f82, #0d2f52);
+      padding: 16px 28px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .pdf-card-header h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      color: #fff;
+      font-weight: 600;
+    }
+
+    .pdf-card-header .tag {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      background: rgba(255,255,255,0.15);
+      color: rgba(255,255,255,0.85);
+      padding: 3px 10px;
+      border-radius: 20px;
+      flex-shrink: 0;
+    }
+
+    iframe {
+      width: 100%;
+      height: 80vh;
+      border: none;
+      display: block;
+    }
+
+    .note {
+      font-size: 0.75rem;
+      color: #9ca3af;
+      text-align: center;
+      margin-top: 16px;
+    }
+
+    /* ── Blocked screen ── */
+    #blocked {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 88vh;
+      text-align: center;
+      padding: 32px;
+    }
+
+    #blocked .icon { font-size: 3rem; margin-bottom: 20px; }
+
+    #blocked h2 {
+      font-family: 'Playfair Display', serif;
+      color: #0d2f52;
+      font-size: 1.5rem;
+      margin-bottom: 12px;
+    }
+
+    #blocked p {
+      color: #6b7280;
+      font-size: 0.92rem;
+      margin-bottom: 28px;
+      max-width: 340px;
+      line-height: 1.6;
+    }
+
+    #blocked a {
+      display: inline-block;
+      background: linear-gradient(135deg, #1b4f82, #0d2f52);
+      color: #fff;
+      font-weight: 700;
+      padding: 13px 28px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 600px) {
+      iframe { height: 70vh; }
+      .topbar { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Shown only after form is filled -->
+  <div id="content">
+    <div class="topbar">
+      <div>
+        <div class="brand">biko method</div>
+        <div class="greeting">Welcome, <span id="userName"></span> 👋</div>
+      </div>
+      <a class="dl-btn" href="5_Emotional_Patterns_Every_Coach_Should_Recognize.pdf" download>
+        ⬇ Save PDF
+      </a>
+    </div>
+
+    <div class="pdf-card">
+      <div class="pdf-card-header">
+        <h2>5 Emotional Patterns Every Coach Should Recognize Before Pushing for Accountability</h2>
+        <span class="tag">Free Guide</span>
+      </div>
+      <iframe
+        src="5_Emotional_Patterns_Every_Coach_Should_Recognize.pdf"
+        title="5 Emotional Patterns Every Coach Should Recognize"
+        allow="fullscreen"
+      ></iframe>
+    </div>
+
+    <p class="note">Trouble viewing? Use the "Save PDF" button above to download it directly.</p>
+  </div>
+
+  <!-- Shown if accessed directly without filling the form -->
+  <div id="blocked">
+    <div class="icon">🔒</div>
+    <h2>Access Restricted</h2>
+    <p>Please enter your name and email first to unlock this free field guide.</p>
+    <a href="index.html">← Go Back &amp; Get Access</a>
+  </div>
+
+  <script>
+    const granted = sessionStorage.getItem('grantedAccess');
+    const name    = sessionStorage.getItem('grantedName') || 'Friend';
+
+    if (granted === 'true') {
+      document.getElementById('content').style.display = 'block';
+      // Show first name only
+      document.getElementById('userName').textContent = name.split(' ')[0];
+    } else {
+      document.getElementById('blocked').style.display = 'flex';
+    }
+  </script>
+</body>
+</html>
